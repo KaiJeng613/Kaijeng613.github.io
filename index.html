@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Kai Jeng | Software Engineer</title>
 
   <style>
+    :root {
+      --bg: #eaf0f6;
+      --card: #ffffff;
+      --text: #20252b;
+      --muted: #68717c;
+      --border: #dfe5eb;
+      --primary: #1262c9;
+      --primary-dark: #0d3f83;
+      --primary-soft: #eaf3ff;
+      --shadow: 0 10px 30px rgba(32, 55, 80, 0.08);
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -17,15 +29,21 @@
 
     body {
       margin: 0;
-      background: #f7f7f7;
-      color: #333;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      line-height: 1.65;
     }
 
     a {
-      color: #1677c8;
+      color: var(--primary);
       text-decoration: none;
     }
 
@@ -33,162 +51,413 @@
       text-decoration: underline;
     }
 
-    .container {
-      width: 90%;
-      max-width: 900px;
-      margin: 50px auto;
+    button {
+      font: inherit;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 30px auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
     }
 
     /* PROFILE */
 
-    .profile {
-      display: flex;
+    .profile-card {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      padding: 28px;
       align-items: center;
-      gap: 35px;
-      margin-bottom: 35px;
+      margin-bottom: 24px;
     }
 
-    .profile img {
-      width: 180px;
-      height: 180px;
+    .profile-photo {
+      width: 190px;
+      height: 190px;
       border-radius: 50%;
       object-fit: cover;
-      background: #ddd;
+      border: 8px solid #fff;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.18);
     }
 
-    .profile-info h1 {
-      margin: 0 0 5px;
-      font-size: 36px;
-      font-weight: 500;
+    .profile-content h1 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 48px);
+      line-height: 1.1;
     }
 
-    .profile-info h2 {
-      margin: 0 0 12px;
+    .role {
+      color: var(--muted);
       font-size: 18px;
-      font-weight: 400;
-      color: #777;
+      margin: 8px 0 14px;
     }
 
-    .profile-info p {
-      margin: 5px 0;
-      color: #555;
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin-bottom: 18px;
     }
 
-    .social-links {
-      margin-top: 12px;
+    .contact-row a,
+    .contact-row span {
+      color: var(--text);
+      font-size: 15px;
     }
 
-    .social-links a {
-      margin-right: 15px;
-    }
-
-    /* SECTIONS */
-
-    section {
-      margin: 50px 0;
-    }
-
-    section > h2 {
-      font-size: 25px;
-      font-weight: 500;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 10px;
-      margin-bottom: 25px;
+    .profile-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 18px 0;
     }
 
     .intro {
-      font-size: 17px;
-      color: #555;
-    }
-
-    /* CARDS */
-
-    .job,
-    .project {
-      background: white;
-      padding: 25px;
-      margin-bottom: 20px;
-      border-radius: 6px;
-      border: 1px solid #e5e5e5;
-    }
-
-    .job h3,
-    .project h3 {
+      color: #414852;
+      max-width: 900px;
       margin: 0;
-      font-size: 21px;
     }
 
-    .company {
+    .intro + .intro {
+      margin-top: 14px;
+    }
+
+    /* MAIN CONTENT */
+
+    .content-card {
+      padding: 0 26px 30px;
+    }
+
+    /* TABS */
+
+    .tabs {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 28px;
+      scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-button {
+      background: transparent;
+      border: 0;
+      border-bottom: 3px solid transparent;
+      padding: 20px 18px 15px;
+      color: #59616a;
       font-weight: 600;
-      margin-top: 4px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition:
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s;
     }
 
-    .meta {
-      color: #888;
-      font-size: 14px;
-      margin: 5px 0 15px;
+    .tab-button:hover {
+      color: var(--primary);
+      background: #f8fbff;
     }
 
-    .key-areas {
-      color: #666;
+    .tab-button.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.22s ease;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* FILTERS */
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .filter-button {
+      background: #fff;
+      border: 1px solid #ccd5df;
+      border-radius: 999px;
+      padding: 9px 18px;
+      cursor: pointer;
+      color: #505861;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .filter-button:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .filter-button.active {
+      background: var(--primary-dark);
+      color: white;
+      border-color: var(--primary-dark);
+    }
+
+    /* EXPERIENCE */
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 28px;
+      padding: 28px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .experience-item:last-child {
+      border-bottom: 0;
+    }
+
+    .experience-item.hidden {
+      display: none;
+    }
+
+    .date {
+      color: #39414a;
       font-size: 14px;
-      margin-top: 15px;
+    }
+
+    .experience-content h2 {
+      margin: 7px 0 2px;
+      font-size: 24px;
+    }
+
+    .experience-content h3 {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .experience-content ul {
+      padding-left: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-soft);
+      border: 1px solid #b8d4f7;
+    }
+
+    .tools {
+      margin-top: 16px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border);
+      color: #4d5660;
     }
 
     /* SKILLS */
 
-    .skills {
+    .skill-section {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 25px;
+      padding: 25px 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-section:last-child {
+      border-bottom: 0;
+    }
+
+    .skill-section h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .skill-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
 
     .skill {
-      background: #e9ecef;
-      padding: 6px 12px;
-      border-radius: 5px;
+      background: #f2f5f8;
+      border: 1px solid #e0e5ea;
+      padding: 7px 12px;
+      border-radius: 8px;
       font-size: 14px;
+      transition: 0.2s ease;
     }
 
-    /* WORK STYLE */
+    .skill:hover {
+      transform: translateY(-2px);
+      border-color: #b9cef0;
+      background: var(--primary-soft);
+    }
 
-    .work-style li {
-      margin-bottom: 12px;
+    /* PROJECTS */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        border-color 0.2s;
+    }
+
+    .project:hover {
+      transform: translateY(-4px);
+      border-color: #bcd0e8;
+      box-shadow: 0 10px 30px rgba(32, 55, 80, 0.08);
+    }
+
+    .project h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .project p {
+      color: var(--muted);
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .about-box {
+      padding: 22px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+    }
+
+    .about-box h2 {
+      margin-top: 0;
+      font-size: 20px;
     }
 
     /* FOOTER */
 
     footer {
       text-align: center;
-      color: #999;
+      padding: 30px 10px 40px;
+      color: var(--muted);
       font-size: 14px;
-      padding: 40px 0;
+    }
+
+    /* SCROLL TO TOP */
+
+    #scrollTop {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--primary-dark);
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: 0.2s ease;
+    }
+
+    #scrollTop.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
     /* MOBILE */
 
-    @media (max-width: 650px) {
-      .container {
-        margin-top: 30px;
+    @media (max-width: 760px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+        margin-top: 12px;
       }
 
-      .profile {
-        flex-direction: column;
+      .profile-card {
+        grid-template-columns: 1fr;
         text-align: center;
+        padding: 24px 20px;
       }
 
-      .profile img {
-        width: 140px;
-        height: 140px;
+      .profile-photo {
+        width: 150px;
+        height: 150px;
+        margin: auto;
       }
 
-      .profile-info h1 {
-        font-size: 30px;
+      .contact-row {
+        justify-content: center;
       }
 
-      .social-links a {
-        display: inline-block;
-        margin: 5px 8px;
+      .content-card {
+        padding: 0 16px 22px;
+      }
+
+      .tab-button {
+        padding-left: 13px;
+        padding-right: 13px;
+      }
+
+      .experience-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 24px 4px;
+      }
+
+      .skill-section {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -196,436 +465,724 @@
 
 <body>
 
-<main class="container">
+  <main class="page">
 
-  <!-- PROFILE -->
+    <!-- PROFILE -->
 
-  <header class="profile">
+    <section class="card profile-card">
 
-    <img src="profile.jpg" alt="Kai Jeng">
+      <img
+        src="profile.jpg"
+        alt="Kai Jeng"
+        class="profile-photo"
+      />
 
-    <div class="profile-info">
+      <div class="profile-content">
 
-      <h1>Kai Jeng</h1>
-      <h2>Software Engineer</h2>
+        <h1>Kai Jeng</h1>
 
-      <p>📍 Malaysia</p>
+        <div class="role">
+          Software Engineer
+        </div>
 
-      <p>
-        ✉️
-        <a href="mailto:kaijengre2@gmail.com">
-          kaijengre2@gmail.com
-        </a>
-      </p>
+        <div class="contact-row">
 
-      <div class="social-links">
+          <span>📍 Malaysia</span>
 
-        <a href="https://github.com/KaiJeng613"
-           target="_blank"
-           rel="noopener noreferrer">
+          <a href="mailto:kaijengre2@gmail.com">
+            ✉️ kaijengre2@gmail.com
+          </a>
+
+          <a
+            href="https://github.com/KaiJeng613"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/wong-kai-jeng"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+
+        </div>
+
+        <div class="profile-divider"></div>
+
+        <p class="intro">
+          Software engineer focused on building reliable digital products
+          across hospitality, fintech, enterprise automation and
+          self-service platforms.
+        </p>
+
+        <p class="intro">
+          I enjoy solving integration problems, improving engineering
+          workflows and building systems that are practical,
+          maintainable and resilient.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- MAIN CONTENT -->
+
+    <section class="card content-card">
+
+      <!-- TABS -->
+
+      <nav class="tabs">
+
+        <button
+          class="tab-button active"
+          data-tab="experience"
+        >
+          💼 Experience
+        </button>
+
+        <button
+          class="tab-button"
+          data-tab="skills"
+        >
+          🛠 Skills
+        </button>
+
+        <button
+          class="tab-button"
+          data-tab="projects"
+        >
+          &lt;/&gt; Projects
+        </button>
+
+        <button
+          class="tab-button"
+          data-tab="about"
+        >
+          👤 About
+        </button>
+
+      </nav>
+
+      <!-- EXPERIENCE -->
+
+      <div
+        id="experience"
+        class="tab-panel active"
+      >
+
+        <div class="filters">
+
+          <button
+            class="filter-button active"
+            data-filter="all"
+          >
+            All
+          </button>
+
+          <button
+            class="filter-button"
+            data-filter="hospitality"
+          >
+            🏨 Hospitality
+          </button>
+
+          <button
+            class="filter-button"
+            data-filter="fintech"
+          >
+            💳 Fintech
+          </button>
+
+          <button
+            class="filter-button"
+            data-filter="enterprise"
+          >
+            🏢 Enterprise
+          </button>
+
+        </div>
+
+        <article
+          class="experience-item"
+          data-category="hospitality"
+        >
+
+          <div class="date">
+            Selected Engagement
+          </div>
+
+          <div class="experience-content">
+
+            <span class="badge">
+              Hospitality
+            </span>
+
+            <h2>Resorts World Genting</h2>
+
+            <h3>
+              Digital Guest Experience
+            </h3>
+
+            <ul>
+              <li>
+                Worked on self check-in and digital guest experiences.
+              </li>
+
+              <li>
+                Integrated loyalty workflows into guest-facing systems.
+              </li>
+
+              <li>
+                Developed multi-device and kiosk-oriented solutions.
+              </li>
+
+              <li>
+                Designed resilient workflows for high-traffic environments.
+              </li>
+            </ul>
+
+            <div class="tools">
+              <strong>Focus:</strong>
+              Kiosk UX · Loyalty integration ·
+              Offline workflows · Automation
+            </div>
+
+          </div>
+
+        </article>
+
+        <article
+          class="experience-item"
+          data-category="enterprise"
+        >
+
+          <div class="date">
+            Selected Engagement
+          </div>
+
+          <div class="experience-content">
+
+            <span class="badge">
+              Enterprise
+            </span>
+
+            <h2>Adobe Experience Cloud</h2>
+
+            <h3>
+              Enterprise CMS & Content Operations
+            </h3>
+
+            <p>
+              Worked with enterprise content management and
+              publishing workflows designed to improve content
+              operations and governance.
+            </p>
+
+            <div class="tools">
+              <strong>Focus:</strong>
+              Adobe Experience Manager ·
+              Content workflows · Governance · Automation
+            </div>
+
+          </div>
+
+        </article>
+
+        <article
+          class="experience-item"
+          data-category="enterprise"
+        >
+
+          <div class="date">
+            Selected Engagement
+          </div>
+
+          <div class="experience-content">
+
+            <span class="badge">
+              Enterprise
+            </span>
+
+            <h2>Aldan Technology</h2>
+
+            <h3>
+              Biometrics & Self-Service Systems
+            </h3>
+
+            <ul>
+              <li>
+                Delivered biometric enrollment tablet workflows.
+              </li>
+
+              <li>
+                Worked with self-service hotel kiosk systems.
+              </li>
+
+              <li>
+                Implemented secure data capture and storage workflows.
+              </li>
+            </ul>
+
+            <div class="tools">
+              <strong>Focus:</strong>
+              Biometrics · Kiosks · Encryption · Analytics
+            </div>
+
+          </div>
+
+        </article>
+
+        <article
+          class="experience-item"
+          data-category="fintech"
+        >
+
+          <div class="date">
+            Selected Engagement
+          </div>
+
+          <div class="experience-content">
+
+            <span class="badge">
+              Fintech
+            </span>
+
+            <h2>Finexus Group</h2>
+
+            <h3>
+              Financial & Payment Integrations
+            </h3>
+
+            <p>
+              Worked on integrations for financial platforms with
+              an emphasis on transactional reliability,
+              interoperability and compliance.
+            </p>
+
+            <div class="tools">
+              <strong>Focus:</strong>
+              Payment APIs · Integrations ·
+              Transaction processing · Compliance
+            </div>
+
+          </div>
+
+        </article>
+
+        <article
+          class="experience-item"
+          data-category="fintech"
+        >
+
+          <div class="date">
+            Selected Engagement
+          </div>
+
+          <div class="experience-content">
+
+            <span class="badge">
+              Fintech
+            </span>
+
+            <h2>TESS International / VMS Solutions</h2>
+
+            <h3>
+              AML / KYC Automation
+            </h3>
+
+            <p>
+              Worked with AML/KYC workflow automation and
+              compliance-oriented reporting processes.
+            </p>
+
+            <div class="tools">
+              <strong>Focus:</strong>
+              AML · KYC · Workflow automation ·
+              Regulatory reporting
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+      <!-- SKILLS -->
+
+      <div
+        id="skills"
+        class="tab-panel"
+      >
+
+        <div class="skill-section">
+
+          <h2>Engineering</h2>
+
+          <div class="skill-grid">
+
+            <span class="skill">Software Engineering</span>
+            <span class="skill">API Design</span>
+            <span class="skill">Backend Systems</span>
+            <span class="skill">Platform Engineering</span>
+            <span class="skill">Site Reliability</span>
+            <span class="skill">Web Applications</span>
+
+          </div>
+
+        </div>
+
+        <div class="skill-section">
+
+          <h2>Product Platforms</h2>
+
+          <div class="skill-grid">
+
+            <span class="skill">Kiosk Applications</span>
+            <span class="skill">Mobile Applications</span>
+            <span class="skill">Adobe Experience Manager</span>
+            <span class="skill">Biometric Systems</span>
+            <span class="skill">Payment Integration</span>
+
+          </div>
+
+        </div>
+
+        <div class="skill-section">
+
+          <h2>Delivery</h2>
+
+          <div class="skill-grid">
+
+            <span class="skill">Git</span>
+            <span class="skill">GitHub</span>
+            <span class="skill">Observability</span>
+            <span class="skill">Automation</span>
+            <span class="skill">Documentation</span>
+            <span class="skill">CI/CD</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- PROJECTS -->
+
+      <div
+        id="projects"
+        class="tab-panel"
+      >
+
+        <div class="projects-grid">
+
+          <article class="project">
+
+            <h2>Self Check-in Kiosk</h2>
+
+            <p>
+              Digital self-service check-in experience
+              designed for hospitality environments.
+            </p>
+
+            <div class="tools">
+              Kiosk · Identity · Loyalty · Offline workflows
+            </div>
+
+          </article>
+
+          <article class="project">
+
+            <h2>Biometric Enrollment Tablet</h2>
+
+            <p>
+              Enrollment experience supporting biometric
+              capture and secure information storage.
+            </p>
+
+            <div class="tools">
+              Biometrics · Encryption · Analytics
+            </div>
+
+          </article>
+
+          <article class="project">
+
+            <h2>FIFYard</h2>
+
+            <p>
+              Solana-powered football planner and
+              experimental Web3 project.
+            </p>
+
+            <div class="tools">
+              Solana · Web3 · Product Experiment
+            </div>
+
+          </article>
+
+          <article class="project">
+
+            <h2>Hackathon Experiments</h2>
+
+            <p>
+              Small experiments and rapid prototypes
+              created during AI and developer hackathons.
+            </p>
+
+            <div class="tools">
+              AI · Rapid Prototyping · Product Design
+            </div>
+
+          </article>
+
+          <article class="project">
+
+            <h2>GitHub Projects</h2>
+
+            <p>
+              See my public repositories and development
+              experiments on GitHub.
+            </p>
+
+            <a
+              href="https://github.com/KaiJeng613"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View GitHub →
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+      <!-- ABOUT -->
+
+      <div
+        id="about"
+        class="tab-panel"
+      >
+
+        <div class="about-grid">
+
+          <div class="about-box">
+
+            <h2>Discovery First</h2>
+
+            <p>
+              I prefer understanding requirements,
+              constraints and integration risks before
+              committing to an implementation.
+            </p>
+
+          </div>
+
+          <div class="about-box">
+
+            <h2>Build for Operations</h2>
+
+            <p>
+              Monitoring, logging, documentation and
+              maintainability should be part of the
+              system from the beginning.
+            </p>
+
+          </div>
+
+          <div class="about-box">
+
+            <h2>Practical Engineering</h2>
+
+            <p>
+              I prefer straightforward solutions that
+              are reliable and easy for future engineers
+              to understand.
+            </p>
+
+          </div>
+
+          <div class="about-box">
+
+            <h2>Continuous Learning</h2>
+
+            <p>
+              I enjoy experimenting with new technologies,
+              developer tools, AI workflows and product ideas.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <footer>
+
+      <div>
+        <a
+          href="https://github.com/KaiJeng613"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           GitHub
         </a>
 
-        <a href="https://www.linkedin.com/in/wong-kai-jeng"
-           target="_blank"
-           rel="noopener noreferrer">
+        &nbsp;·&nbsp;
+
+        <a
+          href="https://www.linkedin.com/in/wong-kai-jeng"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           LinkedIn
         </a>
 
-      </div>
+        &nbsp;·&nbsp;
 
-    </div>
-
-  </header>
-
-
-  <!-- ABOUT -->
-
-  <section class="intro">
-
-    <p>
-      Software engineer with experience delivering end-to-end solutions
-      across hospitality, financial services, enterprise automation,
-      and digital guest experiences.
-    </p>
-
-    <p>
-      I enjoy designing resilient architectures, building polished
-      experiences across web, kiosk, and mobile platforms, and working
-      with teams to ship reliable software.
-    </p>
-
-  </section>
-
-
-  <!-- FOCUS -->
-
-  <section>
-
-    <h2>What I Focus On</h2>
-
-    <ul class="work-style">
-
-      <li>
-        Platform engineering and site reliability for large-scale
-        guest and consumer experiences.
-      </li>
-
-      <li>
-        Kiosk, tablet, and responsive web solutions balancing
-        usability with compliance requirements.
-      </li>
-
-      <li>
-        API-first architectures with strong telemetry,
-        observability, and release hygiene.
-      </li>
-
-      <li>
-        Team delivery, documentation, mentoring, and sustainable
-        engineering standards.
-      </li>
-
-    </ul>
-
-  </section>
-
-
-  <!-- EXPERIENCE -->
-
-  <section>
-
-    <h2>Selected Experience</h2>
-
-
-    <div class="job">
-
-      <h3>Resorts World Genting</h3>
-
-      <div class="company">
-        Hospitality · Digital Guest Experience
-      </div>
-
-      <p>
-        Modernized the guest digital journey through self check-in
-        flows, loyalty programme integrations, and multi-device
-        kiosk experiences.
-      </p>
-
-      <p>
-        Delivered offline-first resilience and automated
-        reconciliation pipelines for a high-traffic resort
-        environment.
-      </p>
-
-      <div class="key-areas">
-        <strong>Key areas:</strong>
-        Kiosk UX · Loyalty integrations · Offline caching ·
-        Automated reconciliation
-      </div>
-
-    </div>
-
-
-    <div class="job">
-
-      <h3>Adobe Experience Cloud</h3>
-
-      <div class="company">
-        Enterprise CMS · Content Operations
-      </div>
-
-      <p>
-        Led an Adobe Experience Manager implementation focused on
-        improving content velocity and governance across digital
-        touchpoints.
-      </p>
-
-      <div class="key-areas">
-        <strong>Key areas:</strong>
-        AEM · Content governance · Workflow automation ·
-        Digital publishing
-      </div>
-
-    </div>
-
-
-    <div class="job">
-
-      <h3>Aldan Technology</h3>
-
-      <div class="company">
-        Biometrics · Self-Service Hardware
-      </div>
-
-      <p>
-        Delivered a biometric enrollment tablet for Aeon Credit
-        and self-service hotel check-in kiosk solutions.
-      </p>
-
-      <p>
-        Worked with secure biometric capture, encrypted storage,
-        kiosk hardware, and branch-level analytics.
-      </p>
-
-      <div class="key-areas">
-        <strong>Key areas:</strong>
-        Biometric capture · AES-encrypted storage ·
-        Kiosk hardware · Analytics
-      </div>
-
-    </div>
-
-
-    <div class="job">
-
-      <h3>Finexus Group</h3>
-
-      <div class="company">
-        Fintech · Payment Integration
-      </div>
-
-      <p>
-        Built integrations for regulated financial platforms with
-        a focus on transactional integrity, compliance, and
-        interoperability with third-party payment networks.
-      </p>
-
-      <div class="key-areas">
-        <strong>Key areas:</strong>
-        Payment integration · Financial APIs ·
-        Regulatory compliance · Transaction processing
-      </div>
-
-    </div>
-
-
-    <div class="job">
-
-      <h3>TESS International & VMS Solutions</h3>
-
-      <div class="company">
-        Compliance · AML/KYC Automation
-      </div>
-
-      <p>
-        Worked on AML/KYC workflow automation and compliance
-        reporting pipelines designed to reduce manual processing
-        and improve audit traceability.
-      </p>
-
-      <div class="key-areas">
-        <strong>Key areas:</strong>
-        AML/KYC · Workflow automation · Compliance reporting ·
-        Regulatory risk
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- SKILLS -->
-
-  <section>
-
-    <h2>Technical Focus</h2>
-
-    <div class="skills">
-
-      <span class="skill">Software Engineering</span>
-      <span class="skill">API Design</span>
-      <span class="skill">Platform Engineering</span>
-      <span class="skill">Site Reliability</span>
-      <span class="skill">Web Applications</span>
-      <span class="skill">Kiosk Applications</span>
-      <span class="skill">Mobile Applications</span>
-      <span class="skill">AEM</span>
-      <span class="skill">Payment Integration</span>
-      <span class="skill">Biometrics</span>
-      <span class="skill">AML / KYC</span>
-      <span class="skill">Workflow Automation</span>
-      <span class="skill">Observability</span>
-      <span class="skill">Git</span>
-      <span class="skill">GitHub</span>
-
-    </div>
-
-  </section>
-
-
-  <!-- PROJECTS -->
-
-  <section>
-
-    <h2>Spotlight Projects</h2>
-
-
-    <div class="project">
-
-      <h3>Self Check-in Kiosk</h3>
-
-      <div class="meta">
-        Resorts World Genting
-      </div>
-
-      <p>
-        Multi-device self check-in experience featuring secure
-        identity verification, offline-first caching, loyalty
-        integrations, and automated reconciliation.
-      </p>
-
-    </div>
-
-
-    <div class="project">
-
-      <h3>Aeon Credit Biometric Tablet</h3>
-
-      <p>
-        Enrollment workflow featuring biometric capture,
-        AES-encrypted storage, and branch-level analytics.
-      </p>
-
-    </div>
-
-
-    <div class="project">
-
-      <h3>
-        <a href="https://github.com/KaiJeng613"
-           target="_blank"
-           rel="noopener noreferrer">
-          KJSite Portfolio
+        <a href="mailto:kaijengre2@gmail.com">
+          Email
         </a>
-      </h3>
+      </div>
 
       <p>
-        An evolving project for experimenting with modern frontend
-        technologies and cloud-native deployment patterns.
+        © <span id="year"></span> Kai Jeng
       </p>
 
-    </div>
+    </footer>
 
-  </section>
+  </main>
 
+  <button
+    id="scrollTop"
+    aria-label="Scroll to top"
+    title="Scroll to top"
+  >
+    ↑
+  </button>
 
-  <!-- HACKATHONS -->
+  <script>
+    // Tabs
 
-  <section>
+    const tabButtons =
+      document.querySelectorAll(".tab-button");
 
-    <h2>Hackathons & Experiments</h2>
+    const tabPanels =
+      document.querySelectorAll(".tab-panel");
 
-    <div class="project">
+    tabButtons.forEach(button => {
 
-      <h3>Lovable 2025</h3>
-      <p>Kid Quest Play</p>
+      button.addEventListener("click", () => {
 
-    </div>
+        const target =
+          button.dataset.tab;
 
+        tabButtons.forEach(btn => {
+          btn.classList.remove("active");
+        });
 
-    <div class="project">
+        tabPanels.forEach(panel => {
+          panel.classList.remove("active");
+        });
 
-      <h3>Delulu 2025</h3>
-      <p>Sparkle Path</p>
+        button.classList.add("active");
 
-    </div>
+        document
+          .getElementById(target)
+          .classList.add("active");
 
+      });
 
-    <div class="project">
-
-      <h3>Cursor 2025</h3>
-      <p>Prediction Market</p>
-
-    </div>
-
-
-    <div class="project">
-
-      <h3>Build with AI · Seedance 2026</h3>
-      <p>How to Eat Durian Explained</p>
-
-    </div>
-
-
-    <div class="project">
-
-      <h3>FIFYard</h3>
-      <p>Solana-powered football planner.</p>
-
-    </div>
-
-  </section>
+    });
 
 
-  <!-- HOW I WORK -->
+    // Experience filters
 
-  <section>
+    const filterButtons =
+      document.querySelectorAll(".filter-button");
 
-    <h2>How I Work</h2>
+    const experienceItems =
+      document.querySelectorAll(".experience-item");
 
-    <ul class="work-style">
+    filterButtons.forEach(button => {
 
-      <li>
-        <strong>Discovery first —</strong>
-        align with stakeholders, clarify success metrics,
-        and de-risk integrations early.
-      </li>
+      button.addEventListener("click", () => {
 
-      <li>
-        <strong>Design for operability —</strong>
-        logging, alerting, monitoring, and runbooks are part
-        of the product rather than an afterthought.
-      </li>
+        const filter =
+          button.dataset.filter;
 
-      <li>
-        <strong>Tight feedback loops —</strong>
-        short iterations, automated QA, and pragmatic
-        documentation keep teams aligned.
-      </li>
+        filterButtons.forEach(btn => {
+          btn.classList.remove("active");
+        });
 
-    </ul>
+        button.classList.add("active");
 
-  </section>
+        experienceItems.forEach(item => {
 
+          const category =
+            item.dataset.category;
 
-  <!-- CONTACT -->
+          if (
+            filter === "all" ||
+            category === filter
+          ) {
 
-  <section>
+            item.classList.remove("hidden");
 
-    <h2>Let's Connect</h2>
+          } else {
 
-    <p>
-      Interested in talking about software engineering,
-      architecture, or collaboration?
-    </p>
+            item.classList.add("hidden");
 
-    <p>
-      <a href="mailto:kaijengre2@gmail.com">
-        Email me
-      </a>
-      ·
-      <a href="https://www.linkedin.com/in/wong-kai-jeng"
-         target="_blank"
-         rel="noopener noreferrer">
-        LinkedIn
-      </a>
-      ·
-      <a href="https://github.com/KaiJeng613"
-         target="_blank"
-         rel="noopener noreferrer">
-        GitHub
-      </a>
-    </p>
+          }
 
-  </section>
+        });
+
+      });
+
+    });
 
 
-  <footer>
-    © 2026 Kai Jeng
-  </footer>
+    // Current year
 
-</main>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    // Scroll to top button
+
+    const scrollTopButton =
+      document.getElementById("scrollTop");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 400) {
+
+        scrollTopButton.classList.add("show");
+
+      } else {
+
+        scrollTopButton.classList.remove("show");
+
+      }
+
+    });
+
+    scrollTopButton.addEventListener("click", () => {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    });
+  </script>
 
 </body>
 </html>
