@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Kai Jeng | Software Engineer</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #f7f7f7;
+      color: #333;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #1677c8;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      margin: 50px auto;
+    }
+
+    /* PROFILE */
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+      margin-bottom: 35px;
+    }
+
+    .profile img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #ddd;
+    }
+
+    .profile-info h1 {
+      margin: 0 0 5px;
+      font-size: 36px;
+      font-weight: 500;
+    }
+
+    .profile-info h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      font-weight: 400;
+      color: #777;
+    }
+
+    .profile-info p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .social-links {
+      margin-top: 12px;
+    }
+
+    .social-links a {
+      margin-right: 15px;
+    }
+
+    /* SECTIONS */
+
+    section {
+      margin: 50px 0;
+    }
+
+    section > h2 {
+      font-size: 25px;
+      font-weight: 500;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+    }
+
+    .intro {
+      font-size: 17px;
+      color: #555;
+    }
+
+    /* CARDS */
+
+    .job,
+    .project {
+      background: white;
+      padding: 25px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #e5e5e5;
+    }
+
+    .job h3,
+    .project h3 {
+      margin: 0;
+      font-size: 21px;
+    }
+
+    .company {
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .meta {
+      color: #888;
+      font-size: 14px;
+      margin: 5px 0 15px;
+    }
+
+    .key-areas {
+      color: #666;
+      font-size: 14px;
+      margin-top: 15px;
+    }
+
+    /* SKILLS */
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      background: #e9ecef;
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    /* WORK STYLE */
+
+    .work-style li {
+      margin-bottom: 12px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      color: #999;
+      font-size: 14px;
+      padding: 40px 0;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 650px) {
+      .container {
+        margin-top: 30px;
+      }
+
+      .profile {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile img {
+        width: 140px;
+        height: 140px;
+      }
+
+      .profile-info h1 {
+        font-size: 30px;
+      }
+
+      .social-links a {
+        display: inline-block;
+        margin: 5px 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<main class="container">
+
+  <!-- PROFILE -->
+
+  <header class="profile">
+
+    <img src="profile.jpg" alt="Kai Jeng">
+
+    <div class="profile-info">
+
+      <h1>Kai Jeng</h1>
+      <h2>Software Engineer</h2>
+
+      <p>📍 Malaysia</p>
+
+      <p>
+        ✉️
+        <a href="mailto:kaijengre2@gmail.com">
+          kaijengre2@gmail.com
+        </a>
+      </p>
+
+      <div class="social-links">
+
+        <a href="https://github.com/KaiJeng613"
+           target="_blank"
+           rel="noopener noreferrer">
+          GitHub
+        </a>
+
+        <a href="https://www.linkedin.com/in/wong-kai-jeng"
+           target="_blank"
+           rel="noopener noreferrer">
+          LinkedIn
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- ABOUT -->
+
+  <section class="intro">
+
+    <p>
+      Software engineer with experience delivering end-to-end solutions
+      across hospitality, financial services, enterprise automation,
+      and digital guest experiences.
+    </p>
+
+    <p>
+      I enjoy designing resilient architectures, building polished
+      experiences across web, kiosk, and mobile platforms, and working
+      with teams to ship reliable software.
+    </p>
+
+  </section>
+
+
+  <!-- FOCUS -->
+
+  <section>
+
+    <h2>What I Focus On</h2>
+
+    <ul class="work-style">
+
+      <li>
+        Platform engineering and site reliability for large-scale
+        guest and consumer experiences.
+      </li>
+
+      <li>
+        Kiosk, tablet, and responsive web solutions balancing
+        usability with compliance requirements.
+      </li>
+
+      <li>
+        API-first architectures with strong telemetry,
+        observability, and release hygiene.
+      </li>
+
+      <li>
+        Team delivery, documentation, mentoring, and sustainable
+        engineering standards.
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <!-- EXPERIENCE -->
+
+  <section>
+
+    <h2>Selected Experience</h2>
+
+
+    <div class="job">
+
+      <h3>Resorts World Genting</h3>
+
+      <div class="company">
+        Hospitality · Digital Guest Experience
+      </div>
+
+      <p>
+        Modernized the guest digital journey through self check-in
+        flows, loyalty programme integrations, and multi-device
+        kiosk experiences.
+      </p>
+
+      <p>
+        Delivered offline-first resilience and automated
+        reconciliation pipelines for a high-traffic resort
+        environment.
+      </p>
+
+      <div class="key-areas">
+        <strong>Key areas:</strong>
+        Kiosk UX · Loyalty integrations · Offline caching ·
+        Automated reconciliation
+      </div>
+
+    </div>
+
+
+    <div class="job">
+
+      <h3>Adobe Experience Cloud</h3>
+
+      <div class="company">
+        Enterprise CMS · Content Operations
+      </div>
+
+      <p>
+        Led an Adobe Experience Manager implementation focused on
+        improving content velocity and governance across digital
+        touchpoints.
+      </p>
+
+      <div class="key-areas">
+        <strong>Key areas:</strong>
+        AEM · Content governance · Workflow automation ·
+        Digital publishing
+      </div>
+
+    </div>
+
+
+    <div class="job">
+
+      <h3>Aldan Technology</h3>
+
+      <div class="company">
+        Biometrics · Self-Service Hardware
+      </div>
+
+      <p>
+        Delivered a biometric enrollment tablet for Aeon Credit
+        and self-service hotel check-in kiosk solutions.
+      </p>
+
+      <p>
+        Worked with secure biometric capture, encrypted storage,
+        kiosk hardware, and branch-level analytics.
+      </p>
+
+      <div class="key-areas">
+        <strong>Key areas:</strong>
+        Biometric capture · AES-encrypted storage ·
+        Kiosk hardware · Analytics
+      </div>
+
+    </div>
+
+
+    <div class="job">
+
+      <h3>Finexus Group</h3>
+
+      <div class="company">
+        Fintech · Payment Integration
+      </div>
+
+      <p>
+        Built integrations for regulated financial platforms with
+        a focus on transactional integrity, compliance, and
+        interoperability with third-party payment networks.
+      </p>
+
+      <div class="key-areas">
+        <strong>Key areas:</strong>
+        Payment integration · Financial APIs ·
+        Regulatory compliance · Transaction processing
+      </div>
+
+    </div>
+
+
+    <div class="job">
+
+      <h3>TESS International & VMS Solutions</h3>
+
+      <div class="company">
+        Compliance · AML/KYC Automation
+      </div>
+
+      <p>
+        Worked on AML/KYC workflow automation and compliance
+        reporting pipelines designed to reduce manual processing
+        and improve audit traceability.
+      </p>
+
+      <div class="key-areas">
+        <strong>Key areas:</strong>
+        AML/KYC · Workflow automation · Compliance reporting ·
+        Regulatory risk
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SKILLS -->
+
+  <section>
+
+    <h2>Technical Focus</h2>
+
+    <div class="skills">
+
+      <span class="skill">Software Engineering</span>
+      <span class="skill">API Design</span>
+      <span class="skill">Platform Engineering</span>
+      <span class="skill">Site Reliability</span>
+      <span class="skill">Web Applications</span>
+      <span class="skill">Kiosk Applications</span>
+      <span class="skill">Mobile Applications</span>
+      <span class="skill">AEM</span>
+      <span class="skill">Payment Integration</span>
+      <span class="skill">Biometrics</span>
+      <span class="skill">AML / KYC</span>
+      <span class="skill">Workflow Automation</span>
+      <span class="skill">Observability</span>
+      <span class="skill">Git</span>
+      <span class="skill">GitHub</span>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROJECTS -->
+
+  <section>
+
+    <h2>Spotlight Projects</h2>
+
+
+    <div class="project">
+
+      <h3>Self Check-in Kiosk</h3>
+
+      <div class="meta">
+        Resorts World Genting
+      </div>
+
+      <p>
+        Multi-device self check-in experience featuring secure
+        identity verification, offline-first caching, loyalty
+        integrations, and automated reconciliation.
+      </p>
+
+    </div>
+
+
+    <div class="project">
+
+      <h3>Aeon Credit Biometric Tablet</h3>
+
+      <p>
+        Enrollment workflow featuring biometric capture,
+        AES-encrypted storage, and branch-level analytics.
+      </p>
+
+    </div>
+
+
+    <div class="project">
+
+      <h3>
+        <a href="https://github.com/KaiJeng613"
+           target="_blank"
+           rel="noopener noreferrer">
+          KJSite Portfolio
+        </a>
+      </h3>
+
+      <p>
+        An evolving project for experimenting with modern frontend
+        technologies and cloud-native deployment patterns.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- HACKATHONS -->
+
+  <section>
+
+    <h2>Hackathons & Experiments</h2>
+
+    <div class="project">
+
+      <h3>Lovable 2025</h3>
+      <p>Kid Quest Play</p>
+
+    </div>
+
+
+    <div class="project">
+
+      <h3>Delulu 2025</h3>
+      <p>Sparkle Path</p>
+
+    </div>
+
+
+    <div class="project">
+
+      <h3>Cursor 2025</h3>
+      <p>Prediction Market</p>
+
+    </div>
+
+
+    <div class="project">
+
+      <h3>Build with AI · Seedance 2026</h3>
+      <p>How to Eat Durian Explained</p>
+
+    </div>
+
+
+    <div class="project">
+
+      <h3>FIFYard</h3>
+      <p>Solana-powered football planner.</p>
+
+    </div>
+
+  </section>
+
+
+  <!-- HOW I WORK -->
+
+  <section>
+
+    <h2>How I Work</h2>
+
+    <ul class="work-style">
+
+      <li>
+        <strong>Discovery first —</strong>
+        align with stakeholders, clarify success metrics,
+        and de-risk integrations early.
+      </li>
+
+      <li>
+        <strong>Design for operability —</strong>
+        logging, alerting, monitoring, and runbooks are part
+        of the product rather than an afterthought.
+      </li>
+
+      <li>
+        <strong>Tight feedback loops —</strong>
+        short iterations, automated QA, and pragmatic
+        documentation keep teams aligned.
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section>
+
+    <h2>Let's Connect</h2>
+
+    <p>
+      Interested in talking about software engineering,
+      architecture, or collaboration?
+    </p>
+
+    <p>
+      <a href="mailto:kaijengre2@gmail.com">
+        Email me
+      </a>
+      ·
+      <a href="https://www.linkedin.com/in/wong-kai-jeng"
+         target="_blank"
+         rel="noopener noreferrer">
+        LinkedIn
+      </a>
+      ·
+      <a href="https://github.com/KaiJeng613"
+         target="_blank"
+         rel="noopener noreferrer">
+        GitHub
+      </a>
+    </p>
+
+  </section>
+
+
+  <footer>
+    © 2026 Kai Jeng
+  </footer>
+
+</main>
+
+</body>
+</html>
