@@ -1,80 +1,69 @@
-const tabButtons =
-  document.querySelectorAll(".tab-button");
+const tabButtons = document.querySelectorAll(".tab-button");
+const tabPanels = document.querySelectorAll(".tab-panel");
 
-const tabPanels =
-  document.querySelectorAll(".tab-panel");
+function activateTab(target) {
+  tabButtons.forEach(button => {
+    button.classList.toggle("active", button.dataset.tab === target);
+  });
+
+  tabPanels.forEach(panel => {
+    panel.classList.toggle("active", panel.id === target);
+  });
+}
 
 tabButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    const target = button.dataset.tab;
-
-    tabButtons.forEach(btn => {
-      btn.classList.remove("active");
-    });
-
-    tabPanels.forEach(panel => {
-      panel.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-    document
-      .getElementById(target)
-      .classList.add("active");
-  });
+  button.addEventListener("click", () => activateTab(button.dataset.tab));
 });
 
+// Shared links can open any tab, e.g. ?tab=about.
+const requestedTab = new URLSearchParams(window.location.search).get("tab");
+const hasRequestedTab = Array.from(tabButtons).some(
+  button => button.dataset.tab === requestedTab
+);
 
-const filterButtons =
-  document.querySelectorAll(".filter-button");
+if (hasRequestedTab) {
+  activateTab(requestedTab);
 
-const experienceItems =
-  document.querySelectorAll(".experience-item");
+  // Wait for images to settle before scrolling to the tab navigation.
+  window.addEventListener("load", () => {
+    document.querySelector(".tabs").scrollIntoView({
+      behavior: "instant",
+      block: "start"
+    });
+  }, { once: true });
+}
+
+const filterButtons = document.querySelectorAll(".filter-button");
+const experienceItems = document.querySelectorAll(".experience-item");
 
 filterButtons.forEach(button => {
   button.addEventListener("click", () => {
     const filter = button.dataset.filter;
 
-    filterButtons.forEach(btn => {
-      btn.classList.remove("active");
+    filterButtons.forEach(filterButton => {
+      filterButton.classList.toggle("active", filterButton === button);
     });
-
-    button.classList.add("active");
 
     experienceItems.forEach(item => {
-      const category = item.dataset.category;
-
-      if (
-        filter === "all" ||
-        category === filter
-      ) {
-        item.classList.remove("hidden");
-      } else {
-        item.classList.add("hidden");
-      }
+      item.classList.toggle(
+        "hidden",
+        filter !== "all" && item.dataset.category !== filter
+      );
     });
   });
 });
 
+document.getElementById("year").textContent = new Date().getFullYear();
 
-document.getElementById("year").textContent =
-  new Date().getFullYear();
+const scrollTopButton = document.getElementById("scrollTop");
 
+function updateScrollTopButton() {
+  scrollTopButton.classList.toggle("show", window.scrollY > 400);
+}
 
-const scrollTopButton =
-  document.getElementById("scrollTop");
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 400) {
-    scrollTopButton.classList.add("show");
-  } else {
-    scrollTopButton.classList.remove("show");
-  }
-});
+window.addEventListener("scroll", updateScrollTopButton, { passive: true });
+updateScrollTopButton();
 
 scrollTopButton.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });

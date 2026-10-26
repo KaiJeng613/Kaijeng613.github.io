@@ -58,6 +58,8 @@ button {
   box-shadow: var(--shadow);
 }
 
+/* PROFILE */
+
 .profile-card {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -117,9 +119,13 @@ button {
   margin-top: 14px;
 }
 
+/* MAIN CONTENT */
+
 .content-card {
   padding: 0 26px 30px;
 }
+
+/* TABS */
 
 .tabs {
   display: flex;
@@ -180,6 +186,8 @@ button {
   }
 }
 
+/* FILTERS */
+
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -208,6 +216,8 @@ button {
   color: white;
   border-color: var(--primary-dark);
 }
+
+/* EXPERIENCE */
 
 .experience-item {
   display: grid;
@@ -242,6 +252,10 @@ button {
   color: var(--muted);
 }
 
+.experience-content ul {
+  padding-left: 20px;
+}
+
 .badge {
   display: inline-block;
   padding: 4px 11px;
@@ -253,16 +267,14 @@ button {
   border: 1px solid #b8d4f7;
 }
 
-.experience-content ul {
-  padding-left: 20px;
-}
-
 .tools {
   margin-top: 16px;
   padding-top: 15px;
   border-top: 1px solid var(--border);
   color: #4d5660;
 }
+
+/* SKILLS */
 
 .skill-section {
   display: grid;
@@ -274,6 +286,11 @@ button {
 
 .skill-section:last-child {
   border-bottom: 0;
+}
+
+.skill-section h2 {
+  margin: 0;
+  font-size: 20px;
 }
 
 .skill-grid {
@@ -297,21 +314,18 @@ button {
   background: var(--primary-soft);
 }
 
-.projects-grid,
-.about-grid {
+/* PROJECTS */
+
+.projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 18px;
 }
 
-.project,
-.about-box {
+.project {
   padding: 22px;
   border: 1px solid var(--border);
   border-radius: 14px;
-}
-
-.project {
   transition:
     transform 0.2s,
     box-shadow 0.2s,
@@ -324,9 +338,36 @@ button {
   box-shadow: 0 10px 30px rgba(32, 55, 80, 0.08);
 }
 
-.about-box {
-  background: #f8fafc;
+.project h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
 }
+
+.project p {
+  color: var(--muted);
+}
+
+/* ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.about-box {
+  padding: 22px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+}
+
+.about-box h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+/* FOOTER */
 
 footer {
   text-align: center;
@@ -334,6 +375,8 @@ footer {
   color: var(--muted);
   font-size: 14px;
 }
+
+/* SCROLL TO TOP */
 
 #scrollTop {
   position: fixed;
@@ -359,6 +402,8 @@ footer {
   pointer-events: auto;
   transform: translateY(0);
 }
+
+/* MOBILE */
 
 @media (max-width: 760px) {
   .page {
@@ -386,9 +431,15 @@ footer {
     padding: 0 16px 22px;
   }
 
+  .tab-button {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
   .experience-item {
     grid-template-columns: 1fr;
     gap: 8px;
+    padding: 24px 4px;
   }
 
   .skill-section {
