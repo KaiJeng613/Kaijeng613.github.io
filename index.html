@@ -129,7 +129,12 @@
         class="tab-panel active"
       >
 
-        <div class="filters">
+        <div class="experience-search">
+          <label for="experience-search">Search experience</label>
+          <input id="experience-search" type="search" placeholder="Company, technology or industry…" aria-controls="experience-results" />
+        </div>
+
+        <div class="filters" role="group" aria-label="Filter experience by industry">
 
           <button
             class="filter-button active"
@@ -142,33 +147,49 @@
             class="filter-button"
             data-filter="hospitality"
           >
-            🏨 Hospitality
+            Hospitality
           </button>
 
           <button
             class="filter-button"
             data-filter="fintech"
           >
-            💳 Fintech
+            Fintech
           </button>
 
           <button
             class="filter-button"
             data-filter="enterprise"
           >
-            🏢 Enterprise
+            Enterprise
           </button>
 
+          <button class="filter-button" data-filter="blockchain">Blockchain</button>
         </div>
+
+        <div class="experience-feedback">
+          <p id="experience-status" role="status" aria-live="polite" aria-atomic="true"></p>
+          <button id="reset-experience" type="button" hidden>Clear filters</button>
+        </div>
+
+        <div id="experience-results">
+          <article class="experience-item" data-category="blockchain">
+            <div class="experience-content">
+              <span class="badge">Blockchain</span>
+              <h2><a href="https://etherscan.io/" target="_blank" rel="noopener noreferrer">Etherscan</a></h2>
+              <h3>Current · Blockchain Explorer Platform</h3>
+              <p>
+                My current work at Etherscan builds on my experience across
+                enterprise platforms and financial systems.
+              </p>
+              <div class="tools"><strong>Focus:</strong> Blockchain · Explorer platforms</div>
+            </div>
+          </article>
 
         <article
           class="experience-item"
           data-category="hospitality"
         >
-
-          <div class="date">
-            Selected Engagement
-          </div>
 
           <div class="experience-content">
 
@@ -182,23 +203,10 @@
               Digital Guest Experience
             </h3>
 
-            <ul>
-              <li>
-                Worked on self check-in and digital guest experiences.
-              </li>
-
-              <li>
-                Integrated loyalty workflows into guest-facing systems.
-              </li>
-
-              <li>
-                Developed multi-device and kiosk-oriented solutions.
-              </li>
-
-              <li>
-                Designed resilient workflows for high-traffic environments.
-              </li>
-            </ul>
+            <p>
+              Built self check-in and kiosk experiences, connecting guest
+              journeys with loyalty workflows across multiple devices.
+            </p>
 
             <div class="tools">
               <strong>Focus:</strong>
@@ -214,10 +222,6 @@
           class="experience-item"
           data-category="enterprise"
         >
-
-          <div class="date">
-            Selected Engagement
-          </div>
 
           <div class="experience-content">
 
@@ -252,10 +256,6 @@
           data-category="enterprise"
         >
 
-          <div class="date">
-            Selected Engagement
-          </div>
-
           <div class="experience-content">
 
             <span class="badge">
@@ -268,19 +268,10 @@
               Biometrics & Self-Service Systems
             </h3>
 
-            <ul>
-              <li>
-                Delivered biometric enrollment tablet workflows.
-              </li>
-
-              <li>
-                Worked with self-service hotel kiosk systems.
-              </li>
-
-              <li>
-                Implemented secure data capture and storage workflows.
-              </li>
-            </ul>
+            <p>
+              Delivered biometric enrollment and hotel kiosk workflows
+              with secure data capture and storage.
+            </p>
 
             <div class="tools">
               <strong>Focus:</strong>
@@ -295,10 +286,6 @@
           class="experience-item"
           data-category="fintech"
         >
-
-          <div class="date">
-            Selected Engagement
-          </div>
 
           <div class="experience-content">
 
@@ -333,10 +320,6 @@
           data-category="fintech"
         >
 
-          <div class="date">
-            Selected Engagement
-          </div>
-
           <div class="experience-content">
 
             <span class="badge">
@@ -364,6 +347,8 @@
 
         </article>
 
+        </div>
+        <p id="experience-empty" hidden>No matching experience. Try another search or clear the filters.</p>
       </div>
 
       <!-- SKILLS -->

@@ -18,7 +18,8 @@ There is no framework, package installation or build step.
 
 ## Features
 
-- **Experience:** selected engagements, filterable by hospitality, fintech and enterprise.
+- **Experience:** compact summaries, searchable by company, technology or industry,
+  with hospitality, fintech, enterprise and blockchain category filters.
 - **Skills:** engineering, product platform and delivery capabilities.
 - **Projects:** selected work and links to explore further.
 - **About:** a personal account of my career journey and engineering approach.
@@ -40,6 +41,11 @@ There is no framework, package installation or build step.
 
 A valid `tab` value selects the section and scrolls to the tab navigation after
 the page loads. Without a valid value, the site defaults to Experience.
+
+Experience search works together with the selected category. Search terms narrow
+the entries and hide unrelated category buttons, while keeping All and the
+selected category available. A result count, empty state and Clear filters button
+help visitors refine or reset their search.
 
 ## Project structure
 
