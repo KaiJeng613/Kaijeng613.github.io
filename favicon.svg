@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Kai Jeng ID badge</title>
+  <rect width="64" height="64" rx="8" fill="#fff"/>
+  <g fill="none" stroke="#000" stroke-width="4.5">
+    <path d="M25 13a7 7 0 0 1 14 0"/>
+    <path d="M7 14h50v42H7z" fill="#fff"/>
+    <circle cx="32" cy="29" r="7"/>
+    <path d="M20 49a12 12 0 0 1 24 0"/>
+  </g>
+</svg>
