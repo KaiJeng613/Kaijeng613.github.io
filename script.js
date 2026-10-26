@@ -3,17 +3,38 @@ const tabPanels = document.querySelectorAll(".tab-panel");
 
 function activateTab(target) {
   tabButtons.forEach(button => {
-    button.classList.toggle("active", button.dataset.tab === target);
+    const selected = button.dataset.tab === target;
+    button.classList.toggle("active", selected);
+    button.setAttribute("aria-selected", String(selected));
+    button.tabIndex = selected ? 0 : -1;
   });
 
   tabPanels.forEach(panel => {
-    panel.classList.toggle("active", panel.id === target);
+    const selected = panel.id === target;
+    panel.classList.toggle("active", selected);
+    panel.hidden = !selected;
   });
 }
 
-tabButtons.forEach(button => {
+tabButtons.forEach((button, index) => {
   button.addEventListener("click", () => activateTab(button.dataset.tab));
+  button.addEventListener("keydown", event => {
+    let nextIndex;
+    switch (event.key) {
+      case "ArrowRight": nextIndex = (index + 1) % tabButtons.length; break;
+      case "ArrowLeft": nextIndex = (index - 1 + tabButtons.length) % tabButtons.length; break;
+      case "Home": nextIndex = 0; break;
+      case "End": nextIndex = tabButtons.length - 1; break;
+      default: return;
+    }
+    event.preventDefault();
+    const nextButton = tabButtons[nextIndex];
+    activateTab(nextButton.dataset.tab);
+    nextButton.focus();
+  });
 });
+
+activateTab("experience");
 
 // Shared links can open any tab, e.g. ?tab=about.
 const requestedTab = new URLSearchParams(window.location.search).get("tab");

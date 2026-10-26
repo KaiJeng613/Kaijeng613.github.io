@@ -468,25 +468,6 @@ footer {
   margin: 0 0 10px;
 }
 
-.github-stats {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  min-height: 20px;
-  margin-bottom: 18px;
-}
-
-.github-stats a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 28px;
-}
-
-.github-stats img {
-  display: block;
-}
-
 /* SCROLL TO TOP */
 
 #scrollTop {
@@ -565,4 +546,25 @@ footer {
   .site-intro { display: none; }
   html { scroll-behavior: auto; }
   .tab-panel { animation: none; }
+}
+
+/* Shared outline icons use the surrounding text color. */
+.icon {
+  width: 1.15em;
+  height: 1.15em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: -0.18em;
+  flex-shrink: 0;
+}
+
+.tab-button:focus-visible,
+.tab-panel:focus-visible,
+a:focus-visible,
+#scrollTop:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
 }

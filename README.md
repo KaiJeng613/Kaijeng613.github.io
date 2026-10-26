@@ -11,7 +11,7 @@ skills, projects and career journey over the past seven years.
 
 The site brings together my experience across hospitality, enterprise platforms,
 financial integrations and self-service systems, alongside my current direction
-at Etherscan and interests in blockchain, AI and developer tools.
+at Etherscan since 3 November 2025 and interests in blockchain, AI and developer tools.
 
 It is a lightweight static website built with HTML, CSS and vanilla JavaScript.
 There is no framework, package installation or build step.
@@ -27,7 +27,10 @@ There is no framework, package installation or build step.
 - **Responsive layout:** adapts to desktop and mobile screens.
 - **KJ branding:** a transparent SVG favicon and a brief monogram intro animation.
 - **Reduced motion support:** skips the intro animation when the visitor requests less motion.
-- **Footer links:** contact information, repository source, and repository star and fork badges.
+- **Consistent icons:** lightweight outline SVG icons throughout the interface.
+- **Accessible tabs:** labeled panels, selection states, and keyboard navigation.
+- **Sharing metadata:** a page description and a dedicated social preview image.
+- **Footer links:** contact information and repository source.
 - **Small conveniences:** a scroll-to-top button and an automatically updated copyright year.
 
 ## Direct links
@@ -54,14 +57,16 @@ index.html   Page content, section markup, metadata and footer links
 style.css    Layout, colors, responsive styles and animations
 script.js    Tab selection, query parameters, filters and scroll behavior
 favicon.svg  Transparent KJ monogram with light/dark theme colors
+social-preview.png  Image used when sharing the portfolio link
 profile.jpg  Profile photograph
 README.md    Project overview and maintenance notes
 ```
 
 ## Preview locally
 
-Open `index.html` directly in a browser. To preview with a local web server,
-run the following from the repository folder if Python is installed:
+Use a local web server to preview the site so its same-origin Content Security
+Policy behaves consistently. Run the following from the repository folder if
+Python is installed:
 
 ```sh
 python -m http.server 8000
@@ -83,7 +88,14 @@ Stop the server with `Ctrl+C`.
   version query in its `index.html` link to help browsers refresh their cached icon.
 
 When adding a tab, give its button a `data-tab` value matching the panel's `id`.
-The existing JavaScript uses that relationship for both clicks and direct links.
+Keep each tab's `aria-controls` and panel's `aria-labelledby` linked to their
+corresponding IDs as well. The existing JavaScript uses `data-tab` for both clicks
+and direct links. Left/Right Arrow keys move between tabs with wraparound;
+Home/End select the first/last tab. Tab moves into the selected panel.
+
+Update the page description and Open Graph/Twitter metadata in `index.html`
+when changing the site's introduction. Replace `social-preview.png` to update
+the 1200 × 630 sharing image. Social platforms may cache earlier previews.
 
 Before publishing, preview the site at desktop and mobile sizes, check each tab
 and experience filter, and test the direct links above.
@@ -97,15 +109,26 @@ updates to the branch configured as the repository's GitHub Pages publishing
 source. Deployment follows the repository's Pages configuration; no local build
 command is required for this project.
 
-## External services and inspiration
+## Security notes
 
-The footer uses [Shields.io](https://shields.io/) images to display this
-repository's GitHub **stars and forks**, rather than totals across my account or
-pull request counts. The badges load lazily and may show cached counts. They
-depend on Shields.io being available; the repository links remain usable
-independently of those images.
+The site has no backend, authentication, package dependencies or third-party
+scripts. Search uses text matching, and direct tab links only accept existing
+tab names.
 
-The brief monogram intro and repository statistics were inspired by
+A Content Security Policy near the start of `index.html` restricts scripts,
+styles and images to the same origin. It blocks inline scripts, external network
+connections, embedded frames, plugins, form submissions and base URL overrides.
+If adding an external service, review and update the relevant directive rather
+than broadly allowing all sources or inline scripts.
+
+This HTML policy is defense in depth, not a replacement for safe code or HTTPS.
+It cannot set response-header-only protections such as CSP `frame-ancestors`.
+Do not add an `X-Frame-Options` meta tag; it does not enforce framing protection.
+HTTPS and response headers are managed by the hosting platform.
+
+## Design inspiration
+
+The brief monogram intro was inspired by
 [Brittany Chiang's portfolio](https://v4.brittanychiang.com/), adapted to this
 site's simpler KJ branding and existing design.
 
