@@ -58,6 +58,39 @@ button {
   box-shadow: var(--shadow);
 }
 
+/* BRIEF INTRO: CSS-only, so content is never dependent on JavaScript. */
+
+.site-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  pointer-events: none;
+  animation: dismissIntro 200ms ease-out 600ms forwards;
+}
+
+.intro-monogram {
+  width: 80px;
+  height: 80px;
+  stroke: var(--primary);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 140;
+  stroke-dashoffset: 140;
+  animation: drawMonogram 550ms ease-out forwards;
+}
+
+@keyframes drawMonogram {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes dismissIntro {
+  to { opacity: 0; visibility: hidden; }
+}
+
 /* PROFILE */
 
 .profile-card {
@@ -376,6 +409,29 @@ footer {
   font-size: 14px;
 }
 
+.footer-credit {
+  margin: 0 0 10px;
+}
+
+.github-stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  min-height: 20px;
+  margin-bottom: 18px;
+}
+
+.github-stats a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+}
+
+.github-stats img {
+  display: block;
+}
+
 /* SCROLL TO TOP */
 
 #scrollTop {
@@ -450,4 +506,10 @@ footer {
   .about-grid {
     grid-template-columns: 1fr;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-intro { display: none; }
+  html { scroll-behavior: auto; }
+  .tab-panel { animation: none; }
 }

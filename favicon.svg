@@ -1,10 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <title>Kai Jeng ID badge</title>
-  <rect width="64" height="64" rx="8" fill="#fff"/>
-  <g fill="none" stroke="#000" stroke-width="4.5">
-    <path d="M25 13a7 7 0 0 1 14 0"/>
-    <path d="M7 14h50v42H7z" fill="#fff"/>
-    <circle cx="32" cy="29" r="7"/>
-    <path d="M20 49a12 12 0 0 1 24 0"/>
+  <title>Kai Jeng monogram</title>
+  <style>
+    .monogram { stroke: #1262c9; }
+    @media (prefers-color-scheme: dark) {
+      .monogram { stroke: #79b8ff; }
+    }
+  </style>
+  <g class="monogram" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7 14v36m21-36L8 33l20 17"/>
+    <path d="M39 14h17v25c0 15-18 16-21 5"/>
   </g>
 </svg>
